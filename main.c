@@ -4,8 +4,10 @@
 int main(void) {
 
   int option = 0;
+  int h = 0;
   int i = 0;
   int j = 0;
+  int k = 0;
   int tamanho = 0;
   char adress[40];
   char street_name[40];
@@ -31,15 +33,25 @@ int main(void) {
       for(i = 0; i <= tamanho - 2; i++){
           if(adress[i] != '1' && adress[i] != '2' && adress[i] != '3' && adress[i] != '4' && adress[i] != '5' && adress[i] != '6' && adress[i] != '7' && adress[i] != '8' && adress[i] != '9' && adress[i] != '0'){
               street_name[i] = adress[i];
-            
-          } else {
-              street_number[j] = adress[i];
-              j++;
+          
+            } else {
+                break;
           }
       }
 
-      break;
+      for(h = i; h <= i; h++){
+          street_name[h] = '\0';
+      }
 
+      for(j = i; j <= tamanho -2; j++){
+          street_number[k] = adress[j];
+          k++;
+      }
+
+      for(j = k; j <= k; k++){
+          street_number[j] = '\0';
+      }
+      break;
   }
 
   printf("\nO nome da rua é: ");  
