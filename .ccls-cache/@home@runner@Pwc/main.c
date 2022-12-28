@@ -4,7 +4,6 @@
 int main(void) {
 
   int option = 0;
-  int h = 0;
   int i = 0;
   int j = 0;
   int k = 0;
@@ -35,23 +34,20 @@ int main(void) {
               street_name[i] = adress[i];
           
             } else {
+                street_name[i] = '\0';
                 break;
           }
-      }
-
-      for(h = i; h <= i; h++){
-          street_name[h] = '\0';
       }
 
       for(j = i; j <= tamanho -2; j++){
           street_number[k] = adress[j];
           k++;
       }
-
-      for(j = k; j <= k; k++){
-          street_number[j] = '\0';
-      }
+      
+      street_number[k] = '\0';
       break;
+
+    
   }
 
   printf("\nO nome da rua é: ");  
