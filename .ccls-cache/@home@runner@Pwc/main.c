@@ -28,7 +28,7 @@ int main(void) {
 
       tamanho = strlen(adress);
 
-      for(i = 0; i < tamanho - 1; i++){
+      for(i = 0; i <= tamanho - 2; i++){
           if(adress[i] != '1' && adress[i] != '2' && adress[i] != '3' && adress[i] != '4' && adress[i] != '5' && adress[i] != '6' && adress[i] != '7' && adress[i] != '8' && adress[i] != '9'){
               street_name[i] = adress[i];
             
