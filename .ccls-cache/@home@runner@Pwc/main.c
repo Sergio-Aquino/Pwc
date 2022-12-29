@@ -9,10 +9,12 @@ int main(void){
   int k = 0;
   int comma = 0;
   int length = 0;
-  char address[40];
-  char street_name[40];
-  char street_number[40];
+  char address[100];
+  char street_name[100];
+  char street_number[100];
   char *t;
+  char french[100] = {"No"};
+  int comparison;
   
   
   printf("\nAvailable idioms:\n");
@@ -27,7 +29,7 @@ int main(void){
     case 1:
       printf("\nPor favor, informe o seu endereço: ");
       getchar();
-      fgets(address, 40, stdin);
+      fgets(address, 100, stdin);
 
       length = strlen(address);
 
@@ -52,7 +54,7 @@ int main(void){
     case 2:
       printf("\nPlease, inform your address: ");
       getchar();
-      fgets(address, 40, stdin);
+      fgets(address, 100, stdin);
 
       length = strlen(address);
 
@@ -77,7 +79,7 @@ int main(void){
     case 3:
       printf("Merci de renseigner votre adresse: ");
       getchar();
-      fgets(address, 40, stdin);
+      fgets(address, 100, stdin);
 
       length = strlen(address);
 
@@ -107,7 +109,7 @@ int main(void){
     case 4:
       printf("Por favor, informe su dirección: ");
       getchar();
-      fgets(address, 40, stdin);
+      fgets(address, 100, stdin);
 
       length = strlen(address);
 
@@ -132,31 +134,50 @@ int main(void){
             if(address[j] == ','){
               j++;
             
-          } else { 
-            street_number[k] = address[j];
-            k++;
+            } else { 
+              street_number[k] = address[j];
+              k++;
+            }
           }
-      }
       
-      street_number[k] = '\0';
-      break;
+          street_number[k] = '\0';
+          break;
         
       } else {
           t = strtok(address, " ");
 
           while(t != NULL){
-              printf("\n%s", t);
-              t = strtok(NULL, " ");
+              if(strcmp(t, "No") != 0){
+                  strcat(street_name, t);
+                  strcat(street_name, " ");
+                  t = strtok(NULL, " ");
+                
+              } else {
+                  while(t != NULL){
+                      strcat(street_number, t);
+                      strcat(street_number, " ");
+                      t = strtok(NULL, " ");
+                  }
+              }
           }
-          
       }
+      
+      for(i = 0; i <= length - 2; i++){
+        if(street_name[i] == '@'){
+            for(i = 0; i <= length - 2; i++){
+                street_name[i] = street_name[i+1];
+            }
+        }
+      }
+      
+      break;
   }
 
-  /*printf("\nO nome da rua é: ");  
+  printf("\nO nome da rua é: ");  
   puts(street_name);
 
   printf("O número da rua é: ");
-  puts(street_number); */
+  puts(street_number);
   
   return 0;
 }
