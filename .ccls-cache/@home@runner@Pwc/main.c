@@ -124,28 +124,39 @@ int main(void){
               
             } else {
                 street_name[i] = '\0';
-                i += 2;
-  
-                for(j = i; j <= length - 2; j++){
-                    street_number[k] = address[j];
-                    k++;
-                }
+                break;
             }
-            
-            street_number[k] = '\0';
-            break;
           }
+
+          for(j = i; j <= length - 2; j++){
+            if(address[j] == ','){
+              j++;
+            
+          } else { 
+            street_number[k] = address[j];
+            k++;
+          }
+      }
+      
+      street_number[k] = '\0';
+      break;
         
       } else {
+          t = strtok(address, " ");
+
+          while(t != NULL){
+              printf("\n%s", t);
+              t = strtok(NULL, " ");
+          }
           
       }
   }
 
-  printf("\nO nome da rua é: ");  
+  /*printf("\nO nome da rua é: ");  
   puts(street_name);
 
   printf("O número da rua é: ");
-  puts(street_number);
+  puts(street_number); */
   
   return 0;
 }
