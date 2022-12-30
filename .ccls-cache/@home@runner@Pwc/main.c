@@ -3,6 +3,8 @@
 
 int main(void){
 
+  void print_address(char street_name[100], char street_number[100]);
+
   int option = 0;
   int i = 0;
   int j = 0;
@@ -14,6 +16,9 @@ int main(void){
   char street_number[100];
   char *t;
   char french[100] = {"No"};
+  int comparison = 0;
+  char answer[1];
+  int opc = 0;
 
   
   printf("\nAvailable idioms:\n");
@@ -26,53 +31,90 @@ int main(void){
 
   switch(option){
     case 1:
-      printf("\nPor favor, informe o seu endereço: ");
-      getchar();
-      fgets(address, 100, stdin);
-
-      length = strlen(address);
-
-      for(i = 0; i <= length - 2; i++){
-          if(address[i] != '1' && address[i] != '2' && address[i] != '3' && address[i] != '4' && address[i] != '5' && address[i] != '6' && address[i] != '7' && address[i] != '8' && address[i] != '9' && address[i] != '0'){
-              street_name[i] = address[i];
-          
-            } else {
-                street_name[i] = '\0';
-                break;
+      do { 
+          printf("\nPor favor, informe o seu endereço: ");
+          getchar();
+          fgets(address, 100, stdin);
+    
+          length = strlen(address);
+    
+          for(i = 0; i <= length - 2; i++){
+              if(address[i] != '1' && address[i] != '2' && address[i] != '3' && address[i] != '4' && address[i] != '5' && address[i] != '6' && address[i] != '7' && address[i] != '8' && address[i] != '9' && address[i] != '0'){
+                  street_name[i] = address[i];
+              
+                } else {
+                    street_name[i] = '\0';
+                    break;
+              }
           }
-      }
 
-      for(j = i; j <= length - 2; j++){
-          street_number[k] = address[j];
-          k++;
-      }
-      
-      street_number[k] = '\0';
+          k = 0;
+          for(j = i; j <= length - 2; j++){
+              street_number[k] = address[j];
+              k++;
+          }
+          
+          street_number[k] = '\0';
+    
+          print_address(street_name, street_number);
+    
+          for(i = 0; i < length; i++){
+              address[i] = '.';
+          }
+
+          printf("\nQuer inserir mais um endereço? ");
+          getchar();
+          fgets(answer, 1, stdin);
+
+          if(answer[0] == 's'){
+              opc = 1;
+            
+          } else {
+              opc = 0;
+          }
+        
+        } while(opc == 1);
+          
       break;
 
     case 2:
-      printf("\nPlease, inform your address: ");
-      getchar();
-      fgets(address, 100, stdin);
-
-      length = strlen(address);
-
-      for(i = 0; i <= length - 2; i++){
-          if(address[i] == '1' || address[i] == '2' || address[i] == '3' || address[i] == '4' || address[i] == '5' || address[i] == '6' || address[i] == '7' || address[i] == '8' || address[i] == '9' || address[i] == '0' || address[i] == ' '){
-              street_number[i] = address[i];
-          
-          } else {
-              street_number[i] = '\0';
-              break;
-          } 
-      }
+      do { 
+          printf("\nPlease, inform your address: ");
+          getchar();
+          fgets(address, 100, stdin);
     
-      for(j = i; j <= length - 2; j++){
-          street_name[k] = address[j];
-          k++;
-      }
-
-      street_name[k] = '\0';
+          length = strlen(address);
+    
+          for(i = 0; i <= length - 2; i++){
+              if(address[i] == '1' || address[i] == '2' || address[i] == '3' || address[i] == '4' || address[i] == '5' || address[i] == '6' || address[i] == '7' || address[i] == '8' || address[i] == '9' || address[i] == '0' || address[i] == ' '){
+                  street_number[i] = address[i];
+              
+              } else {
+                  street_number[i] = '\0';
+                  break;
+              } 
+          }
+          
+          k = 0;
+          for(j = i; j <= length - 2; j++){
+              street_name[k] = address[j];
+              k++;
+          }
+    
+          street_name[k] = '\0';
+    
+          print_address(street_name, street_number);
+    
+          for(i = 0; i < length; i++){
+                  address[i] = '.';
+          }
+    
+          printf("\nQuer inserir mais um endereço? ");
+          getchar();
+          fgets(answer, 1, stdin);
+        
+        } while(strcmp(answer, "s") == 0);
+          
       break;
 
     case 3:
@@ -92,6 +134,7 @@ int main(void){
           }
       }
 
+      k = 0;
       for(j = i; j <= length - 2; j++){
           if(address[j] == ','){
               j++;
@@ -170,12 +213,18 @@ int main(void){
       break;
   }
 
+  return 0;
+}
+
+void print_address(char street_name[100], char street_number[100]){
+
+  int i = 0;
+  int length = 0;
+  
   printf("\nO nome da rua é: ");  
   puts(street_name);
 
   printf("O número da rua é: ");
-  puts(street_number);
-  
-  return 0;
+  puts(street_number); 
 }
 
