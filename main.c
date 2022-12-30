@@ -163,9 +163,7 @@ int main(void){
       
       for(i = 0; i <= length - 2; i++){
         if(street_name[i] == '@'){
-            for(i = 0; i <= length - 2; i++){
-                street_name[i] = street_name[i+1];
-            }
+            street_name[i] = street_name[i+1];
         }
       }
       
