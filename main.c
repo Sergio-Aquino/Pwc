@@ -143,8 +143,8 @@ int main(void){
                           j++;
                         
                       } else { 
-                        street_name[k] = address[j];
-                        k++;
+                          street_name[k] = address[j];
+                          k++;
                       }
                   }
                   
@@ -247,7 +247,7 @@ int main(void){
                 puts(street_number);
                       
                 for(i = 0; i < length; i++){
-                  address[i] = '.';
+                    address[i] = '.';
                 }
     
                 length = strlen(street_number);
