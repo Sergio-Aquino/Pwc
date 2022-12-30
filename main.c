@@ -14,8 +14,7 @@ int main(void){
   char street_number[100];
   char *t;
   char french[100] = {"No"};
-  int comparison;
-  
+
   
   printf("\nAvailable idioms:\n");
   printf("1 - Portuguese\n");
@@ -77,7 +76,7 @@ int main(void){
       break;
 
     case 3:
-      printf("Merci de renseigner votre adresse: ");
+      printf("\nMerci de renseigner votre adresse: ");
       getchar();
       fgets(address, 100, stdin);
 
@@ -107,7 +106,7 @@ int main(void){
       break;
 
     case 4:
-      printf("Por favor, informe su dirección: ");
+      printf("\nPor favor, informe su dirección: ");
       getchar();
       fgets(address, 100, stdin);
 
